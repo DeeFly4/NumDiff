@@ -2,7 +2,6 @@ import numpy as np
 import functions as f
 from scipy.linalg import norm
 import matplotlib.pyplot as plotter
-import math
 import time
 
 K = 11
@@ -11,7 +10,7 @@ N = np.power(2, N)
 
 
 def ev(k):  # eigenvalues are -(kpi)^2 for positive integers k
-	return -(k * math.pi) ** 2
+	return -(k * np.pi) ** 2
 
 
 ev = ev(np.arange(1, 4))  # first 3 exact eigenvalues

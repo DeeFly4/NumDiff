@@ -1,6 +1,5 @@
 import numpy as np
 import functions as f
-import math
 import time
 
 N = 999
@@ -11,11 +10,11 @@ def eq1(x):
 
 
 def eq2(x):
-	return 800 * np.sin(math.pi * x) ** 2
+	return 800 * np.sin(np.pi * x) ** 2
 
 
 def eq3(x):
-	return 500 + 500 * np.sin(7 * math.pi * x)
+	return 500 + 500 * np.sin(7 * np.pi * x)
 
 
 x = np.linspace(0, 1, N + 2)  # Interior grid points and the boundary points

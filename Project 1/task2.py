@@ -19,7 +19,7 @@ t, y = f.adaptiveRK34(eq, y0, t0, tf, tol)
 
 exact = y0
 for i in t[1:]:
-	exact = np.append(exact, np.dot(expm(A * i), y0), axis=1)
+	exact = np.append(exact, expm(A * i)@y0, axis=1)
 
 # Comment out different parts of the code for different plots
 

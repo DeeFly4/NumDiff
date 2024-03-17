@@ -1,6 +1,5 @@
 import numpy as np
 import functions as f
-import math
 import matplotlib.pyplot as plotter
 import time
 
@@ -14,7 +13,7 @@ x = np.linspace(0, L, N + 2)
 
 
 def ieq(x):  # calculates I(x)
-	return 1e-3 * (3 - 2 * np.cos(math.pi * x / L) ** 12)
+	return 1e-3 * (3 - 2 * np.cos(np.pi * x / L) ** 12)
 
 ex = time.time()
 

@@ -1,16 +1,15 @@
 import numpy as np
-from scipy.linalg import expm, norm
+from scipy.linalg import expm, norm, solve
 import matplotlib.pyplot as plotter
 
 
 def eulerStep(A, uold, h):
-	return uold + h * np.dot(A, uold)
+	return uold + h * A@uold
 
 
 def iEulerStep(A, uold, h):
 	temp = np.eye(np.size(uold)) - h * A
-	tempInv = np.linalg.inv(temp)
-	return np.dot(tempInv, uold)
+	return solve(temp, uold)
 
 
 def RK4Step(f, uold, told, h):
@@ -33,7 +32,7 @@ def eulerInt(A, y0, t0, tf, N):
 	for i in range(1, N + 1):
 		unew = eulerStep(A, uold, h)
 		approx[:, i] = unew[:, 0]
-		exact = np.dot(expm((t0 + h * i) * A), y0)
+		exact = expm((t0 + h * i) * A)@y0
 		err[i] = norm(exact[:, 0] - unew[:, 0])
 		uold = unew
 
@@ -51,7 +50,7 @@ def iEulerInt(A, y0, t0, tf, N):
 	for i in range(1, N + 1):
 		unew = iEulerStep(A, uold, h)
 		approx[:, i] = unew[:, 0]
-		exact = np.dot(expm((t0 + h * i) * A), y0)
+		exact = expm((t0 + h * i) * A)@y0
 		err[i] = norm(exact[:, 0] - unew[:, 0])
 		uold = unew
 

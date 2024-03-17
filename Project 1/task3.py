@@ -48,12 +48,12 @@ print(ex)
 
 # I comment out different parts to produce the different plots
 
-plotter.plot(t, u[0], label='x')
-plotter.plot(t, u[1], label='y')
-# plotter.plot(u[0], u[1], label='phase portrait')
+# plotter.plot(t, u[0], label='x')
+# plotter.plot(t, u[1], label='y')
+plotter.plot(u[0], u[1], label='phase portrait')
 # plotter.semilogy(t, hArr, label='Error')
 plotter.grid()
-plotter.xlabel('Time')  # or 'x' for phase portrait
-# plotter.ylabel('y') # for phase portrait
+plotter.xlabel('x')  # or 'x' for phase portrait
+plotter.ylabel('y') # for phase portrait
 plotter.legend(loc='upper left')
 plotter.show()
