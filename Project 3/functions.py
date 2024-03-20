@@ -26,7 +26,7 @@ def generateST(N):
 
 
 def eulerstep(Tdx, uold, dt):
-	return uold + dt * Tdx.dot(uold)
+	return uold + dt * Tdx@uold
 
 
 def parEul(gvec, tf, N, M):
@@ -59,7 +59,7 @@ def testCFL(g, tf=1, start=800, N=19):
 def TRstep(Tdx, uold, dt):
 	I = identity(len(uold))
 	A = I - dt / 2 * Tdx
-	b = (I + dt / 2 * Tdx).dot(uold)
+	b = (I + dt / 2 * Tdx)@uold
 	return linalg.spsolve(A, b)
 
 
@@ -205,7 +205,7 @@ def LW(u, dx, dt):
 def burgersstep(Tdx, u, d, dx, dt):
 	I = identity(len(u))
 	A = I - d * dt / 2 * Tdx
-	b = LW(u, dx, dt) + d * dt / 2 * Tdx.dot(u)
+	b = LW(u, dx, dt) + d * dt / 2 * Tdx@u
 	return linalg.spsolve(A, b)
 
 
